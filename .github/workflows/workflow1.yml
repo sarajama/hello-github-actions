@@ -1,10 +1,9 @@
-name: Workflow 3
+name: Workflow 1
 
 on:
-  workflow_run:
-    workflows: ["Workflow 1" , "Workflow 2"]
-    types:
-      - completed
+  push:
+    branches:
+      - dev
 
 jobs:
   job1:
@@ -13,7 +12,7 @@ jobs:
       - name: Step 1
         shell: pwsh
         run: |
-         echo "This is Workflow 3 - Job 1"
+         echo "This is Workflow 1 - Job 1"
          Start-Sleep -s 5
 
   job2:
@@ -21,4 +20,4 @@ jobs:
     needs: job1
     steps:
       - name: Step 1
-        run: echo "This is Workflow 3 - Job 2"
+        run: echo "This is Workflow 1 - Job 2"
